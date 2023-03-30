@@ -6,6 +6,7 @@
 
 package org.topicquests.newasr.api;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
@@ -13,7 +14,11 @@ import com.google.gson.JsonObject;
  *
  */
 public interface IDocument extends IAddressable {
-
+	public static final String
+		PUBLICATION_KEY			= "pub",
+		AUTHOR_KEY				= "author",
+		ABSTRACT_KEY			= "abs",
+		BODY_KEY				= "body";
 	/**
 	 * Metadata about a publication
 	 * @param pub
@@ -34,6 +39,16 @@ public interface IDocument extends IAddressable {
 	String getAbstract();
 	
 	void setBody(String text);
+	
+	void addAuthor(IAuthor author);
+	void setAuthors(JsonArray authors);
+	void removeAuthor(IAuthor author);
+	
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	JsonArray getAuthors();
 	
 	/**
 	 * Can return {@code null}

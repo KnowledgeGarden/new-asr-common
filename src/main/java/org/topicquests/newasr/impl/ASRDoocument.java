@@ -6,9 +6,11 @@
 
 package org.topicquests.newasr.impl;
 
+import org.topicquests.newasr.api.IAuthor;
 import org.topicquests.newasr.api.IDocument;
 import org.topicquests.newasr.api.IPublication;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
@@ -80,6 +82,30 @@ public class ASRDoocument implements IDocument {
 	@Override
 	public JsonObject getData() {
 		return data;
+	}
+
+	@Override
+	public void addAuthor(IAuthor author) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setAuthors(JsonArray authors) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeAuthor(IAuthor author) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public JsonArray getAuthors() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
