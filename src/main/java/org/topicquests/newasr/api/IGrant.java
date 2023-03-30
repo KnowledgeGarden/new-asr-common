@@ -5,6 +5,8 @@
  */
 package org.topicquests.newasr.api;
 
+import com.google.gson.JsonObject;
+
 /**
  * @author jackpark
  * Interface for grants typically in PubMed docs
@@ -29,4 +31,6 @@ public interface IGrant {
 	void setCountry(String country);
 	String getCountry();
 	
+	JsonObject getData();
+
 }
