@@ -3,55 +3,92 @@
  */
 package org.topicquests.newasr.impl;
 
+import org.topicquests.newasr.api.IConstants;
 import org.topicquests.newasr.api.IParagraph;
+import org.topicquests.newasr.api.ISentence;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 /**
  * @author jackpark
  *
  */
 public class ASRParagraph implements IParagraph {
+	private JsonObject data;
 
 	/**
 	 * 
 	 */
 	public ASRParagraph() {
-		// TODO Auto-generated constructor stub
+		data = new JsonObject();
+		//defaults
+		setDocumentId(-1);
+	}
+	
+	public ASRParagraph(JsonObject d) {
+		data = d;
 	}
 
 	@Override
 	public void setId(long id) {
-		// TODO Auto-generated method stub
-
+		data.addProperty(IConstants.ID_KEY, new Long(id));
 	}
 
 	@Override
 	public long getId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return data.get(IConstants.ID_KEY).getAsLong();
 	}
 
 	@Override
 	public void setDocumentId(long id) {
-		// TODO Auto-generated method stub
-
+		data.addProperty(ISentence.DOCUMENT_ID, new Long(id));
 	}
 
 	@Override
 	public long getDocumentId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return data.get(ISentence.DOCUMENT_ID).getAsLong();
 	}
 
 	@Override
 	public void setText(String text) {
-		// TODO Auto-generated method stub
-
+		data.addProperty(ISentence.TEXT_FIELD, text);
 	}
 
 	@Override
 	public String getText() {
-		// TODO Auto-generated method stub
-		return null;
+		return data.get(ISentence.TEXT_FIELD).getAsString();
+	}
+
+	@Override
+	public void addSentenceId(long id) {
+		JsonElement je = data.get(IParagraph.SENTENCE_ID_FIELD);
+		JsonArray ja = null;
+		if (je == null) {
+			ja = new JsonArray();
+			data.add(IParagraph.SENTENCE_ID_FIELD, ja);
+		}
+		ja.add(new Long(id));
+	}
+
+	@Override
+	public void setSentenceIds(JsonArray ids) {
+		data.add(IParagraph.SENTENCE_ID_FIELD, ids);
+
+	}
+
+	@Override
+	public JsonArray getSentenceIds() {
+		JsonElement je = data.get(IParagraph.SENTENCE_ID_FIELD);
+		if (je == null)
+			return null;
+		return je.getAsJsonArray();
+	}
+
+	@Override
+	public JsonObject getData() {
+		return data;
 	}
 
 }
