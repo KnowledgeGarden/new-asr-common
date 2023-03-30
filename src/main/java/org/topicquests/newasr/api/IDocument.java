@@ -6,10 +6,41 @@
 
 package org.topicquests.newasr.api;
 
+import com.google.gson.JsonObject;
+
 /**
  * @author jackpark
  *
  */
 public interface IDocument extends IAddressable {
+
+	/**
+	 * Metadata about a publication
+	 * @param pub
+	 */
+	void setPublicationMetadata(IPublication pub);
+	
+	/**
+	 * @feturn can return {@code null)
+	 */
+	IPublication getPublicationMetadata();
+	
+	void setAbstract(String text);
+	
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	String getAbstract();
+	
+	void setBody(String text);
+	
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	String getBody();
+	
+	JsonObject getData();
 
 }

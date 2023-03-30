@@ -7,6 +7,8 @@ package org.topicquests.newasr.api;
 
 import java.util.List;
 
+import com.google.gson.JsonObject;
+
 /**
  * @author jackpark
  * <p>Interface for a JSONObject which deals with
@@ -134,5 +136,7 @@ public interface IAuthor {
 	
 	void setPublicationLocator(String locator);
 	String getPublicationLocator();
+
+	JsonObject getData();
 
 }

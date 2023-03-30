@@ -7,18 +7,26 @@
 package org.topicquests.newasr.impl;
 
 import org.topicquests.newasr.api.IDocument;
+import org.topicquests.newasr.api.IPublication;
+
+import com.google.gson.JsonObject;
 
 /**
  * @author jackpark
  *
  */
 public class ASRDoocument implements IDocument {
+	private JsonObject data;
 
 	/**
 	 * 
 	 */
 	public ASRDoocument() {
-		// TODO Auto-generated constructor stub
+		data = new JsonObject();
+	}
+
+	public ASRDoocument(JsonObject d) {
+		data = d;
 	}
 
 	@Override
@@ -31,6 +39,47 @@ public class ASRDoocument implements IDocument {
 	public long getId() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void setPublicationMetadata(IPublication pub) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IPublication getPublicationMetadata() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setAbstract(String text) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getAbstract() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setBody(String text) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getBody() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JsonObject getData() {
+		return data;
 	}
 
 }

@@ -7,6 +7,8 @@ package org.topicquests.newasr.api;
 
 import java.util.List;
 
+import com.google.gson.JsonObject;
+
 /**
  * @author jackpark
  * <p>An interface for dealing with publications</p>
@@ -116,4 +118,7 @@ public interface IPublication {
 
 	void setMonth(String month);
 	String getMonth();
+	
+	JsonObject getData();
+
 }
