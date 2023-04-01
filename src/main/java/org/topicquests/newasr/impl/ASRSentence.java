@@ -103,13 +103,8 @@ public class ASRSentence implements ISentence {
 	}
 
 	@Override
-	public void addWikidataId(String wikidata) {
-		JsonArray dbp = getWikiData();
-		if (dbp == null)  {
-			dbp = new JsonArray();
-			data.add(ISentence.WD_FIELD, dbp);
-		}
-		dbp.add(wikidata);
+	public void setWikiData(JsonArray wikidata) {
+		data.add(ISentence.WD_FIELD, wikidata);
 	}
 
 	@Override
@@ -121,13 +116,8 @@ public class ASRSentence implements ISentence {
 	}
 
 	@Override
-	public void addDBpediaData(String dbpJson) {
-		JsonArray dbp = getDBpediaData();
-		if (dbp == null)  {
-			dbp = new JsonArray();
-			data.add(ISentence.DBP_FIELD, dbp);
-		}
-		dbp.add(dbpJson);
+	public void setDBpediaData(JsonArray dbpedia) {
+		data.add(ISentence.DBP_FIELD, dbpedia);
 	}
 
 	@Override
@@ -137,7 +127,6 @@ public class ASRSentence implements ISentence {
 			return je.getAsJsonArray();
 		return null;
 	}
-
 	
 
 }

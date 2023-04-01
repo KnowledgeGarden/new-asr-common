@@ -61,7 +61,8 @@ public interface ISentence extends IAddressable {
 	 */
 	String getSpacyData();
 	
-	void addWikidataId(String wikidata);
+	//void addWikidataId(String wikidata);
+	void setWikiData(JsonArray wikidata);
 	
 	/**
 	 * Can return {@code null}
@@ -69,7 +70,8 @@ public interface ISentence extends IAddressable {
 	 */
 	JsonArray getWikiData();
 	
-	void addDBpediaData(String dbpJson);
+	//void addDBpediaData(String dbpJson);
+	void setDBpediaData(JsonArray dbpedia);
 	
 	/**
 	 * Can return {@code null}
