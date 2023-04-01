@@ -1,5 +1,9 @@
 psql postgres -- to boot psql
+WOORDGRAMS
 create database asrtest owner tq_admin;
 requires tq_admin with a password
-to install
+to install 
 psql asrtest -f wordgram-schema.sql
+TRIPLES
+create database tripletest owner tq_admin;
+psql tripletest -f triple-schema.sql
