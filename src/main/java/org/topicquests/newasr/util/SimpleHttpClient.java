@@ -22,7 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.topicquests.newasr.api.IResult;
-import org.topicquests.newasr.impl.ResultPojo;
+import org.topicquests.support.ResultPojo;
 
 /**
  * 
