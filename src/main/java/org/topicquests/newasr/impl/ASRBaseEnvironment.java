@@ -7,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.topicquests.newasr.api.IASREnvironment;
+import org.topicquests.newasr.util.Configurator;
 
 /**
  * @author jackpark
@@ -15,7 +16,7 @@ import org.topicquests.newasr.api.IASREnvironment;
 public abstract class ASRBaseEnvironment implements IASREnvironment {
 	private final Logger LOG;
 	private Map<String, Object> properties;
-	private Map<String, Object> kafkaProperties;
+	private Map<String, Object> kafkaProperties = null;
 
 	/**
 	 * 
@@ -26,29 +27,32 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	public ASRBaseEnvironment(String propertyPath, String kafkaPropetyPath, String loggerPath) {
 		System.setProperty("log4j2.configurationFile", loggerPath);
 		LOG = LoggerFactory.getLogger(ASRBaseEnvironment.class);
+		properties = Configurator.getProperties(propertyPath);
+		if (kafkaPropetyPath != null)
+			kafkaProperties = Configurator.getProperties(kafkaPropetyPath);
+
+
 	}
 
 	@Override
 	public Map<String, Object> getProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		return properties;
 	}
 
 	@Override
 	public Map<String, Object> getKafkaProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		return kafkaProperties;
 	}
 
 	@Override
 	public String getStringProperty(String key) {
-		// TODO Auto-generated method stub
-		return null;
+		return (String)properties.get(key);
 	}
 
 	@Override
 	public String getKafkaProperty(String key) {
-		// TODO Auto-generated method stub
+		if (kafkaProperties != null)
+			return (String)kafkaProperties.get(key);
 		return null;
 	}
 
