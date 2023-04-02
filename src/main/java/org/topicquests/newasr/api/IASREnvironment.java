@@ -7,7 +7,7 @@ import java.util.Map;
  * @author jackpark
  *
  */
-public interface IASREnvironment {
+public interface IASREnvironment extends IEnvironment {
 
 	
 	
@@ -16,11 +16,19 @@ public interface IASREnvironment {
 	//////////
 	
 	Map<String, Object> getProperties();
-
+	
+	/**
+	 * Can return @code null
+	 * @return
+	 */
 	Map<String, Object> getKafkaProperties();
 	
 	String getStringProperty(String key);
 
+	/**
+	 * Can return @code null
+	 * @return
+	 */
 	String getKafkaProperty(String key);
 
 	void shutDown();
