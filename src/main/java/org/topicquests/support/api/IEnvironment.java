@@ -8,5 +8,9 @@ package org.topicquests.support.api;
  *
  */
 public interface IEnvironment {
-	//placer holder for backwward compatibility
+	void shutDown();
+	
+	void logDebug(String message);
+	
+	void logError(String message, Exception e);
 }

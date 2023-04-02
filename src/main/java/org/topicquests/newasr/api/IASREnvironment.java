@@ -35,10 +35,6 @@ public interface IASREnvironment extends IEnvironment {
 	 */
 	String getKafkaProperty(String key);
 
-	void shutDown();
 	
-	void logDebug(String message);
-	
-	void logError(String message, Exception e);
 	
 }

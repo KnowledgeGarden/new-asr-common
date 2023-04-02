@@ -9,7 +9,11 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.topicquests.newasr.api.IASREnvironment;
+import org.topicquests.newasr.api.IExpectationTypes;
+import org.topicquests.newasr.kafka.CommonKafkaProducer;
 import org.topicquests.newasr.util.Configurator;
+
+import com.google.gson.JsonObject;
 
 /**
  * @author jackpark
@@ -19,6 +23,11 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	private final Logger LOG;
 	private Map<String, Object> properties;
 	private Map<String, Object> kafkaProperties = null;
+	private CommonKafkaProducer kafkaProducer;
+
+	public static final String AGENT_GROUP = "ASRGroup";
+	private final String EXPECTATION_TOPIC, SENTENCE_KEY;
+	private final Integer partition;
 
 	/**
 	 * 
@@ -26,15 +35,36 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	 * @param kafkaPropetyPath  can be {@code null}
 	 * @param loggerPath
 	 */
-	public ASRBaseEnvironment(String propertyPath, String kafkaPropetyPath, String loggerPath) {
+	public ASRBaseEnvironment(String propertyPath, String loggerPath) {
 		System.setProperty("log4j2.configurationFile", loggerPath);
 		LOG = LoggerFactory.getLogger(ASRBaseEnvironment.class);
 		properties = Configurator.getProperties(propertyPath);
-		if (kafkaPropetyPath != null)
-			kafkaProperties = Configurator.getProperties(kafkaPropetyPath);
+		kafkaProperties = Configurator.getProperties("kafka-topics.xml");
+		EXPECTATION_TOPIC = getKafkaProperty("ExpectationFailureTopic");
+		SENTENCE_KEY = "data"; 		//TODO FIXME
+		partition = new Integer(0);	//TODO FiXME
 
+
+		kafkaProducer = new CommonKafkaProducer(this, AGENT_GROUP);
 
 	}
+	
+	public CommonKafkaProducer getSentenceProducer() {
+		return kafkaProducer;
+	}
+
+	/**
+	 * General purpose expectation event creation
+	 * @param type -- the expectation type @see {@link IExpectationTypes}
+	 * @param cargo
+	 */
+	public void sendExpectationFailureEvent(String type, String cargo) {
+		JsonObject jo = new JsonObject();
+		jo.addProperty("type", type);
+		jo.addProperty("cargo", cargo);
+		kafkaProducer.sendMessage(EXPECTATION_TOPIC, jo.toString(), SENTENCE_KEY, partition);
+	}
+
 
 	@Override
 	public Map<String, Object> getProperties() {
