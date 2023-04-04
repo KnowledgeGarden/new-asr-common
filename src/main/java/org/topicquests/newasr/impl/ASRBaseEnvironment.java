@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.topicquests.newasr.api.IASREnvironment;
 import org.topicquests.newasr.api.IExpectationTypes;
 import org.topicquests.newasr.kafka.CommonKafkaProducer;
+import org.topicquests.newasr.util.ConfigurationHelper;
 import org.topicquests.newasr.util.Configurator;
 
 import com.google.gson.JsonObject;
@@ -24,7 +25,7 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	private Map<String, Object> properties;
 	private Map<String, Object> kafkaProperties = null;
 	private CommonKafkaProducer kafkaProducer;
-
+	private ConfigurationHelper configPathHelper;
 	public static final String AGENT_GROUP = "ASRGroup";
 	private final String EXPECTATION_TOPIC, SENTENCE_KEY;
 	private final Integer partition;
@@ -36,7 +37,8 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	 * @param loggerPath
 	 */
 	public ASRBaseEnvironment(String propertyPath, String loggerPath) {
-		System.setProperty("log4j2.configurationFile", loggerPath);
+		configPathHelper = new ConfigurationHelper();
+		System.setProperty(configPathHelper.findPath("logconfig.xml"), loggerPath);
 		LOG = LoggerFactory.getLogger(ASRBaseEnvironment.class);
 		properties = Configurator.getProperties(propertyPath);
 		kafkaProperties = Configurator.getProperties("kafka-topics.xml");
