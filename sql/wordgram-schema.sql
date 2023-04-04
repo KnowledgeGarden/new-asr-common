@@ -9,27 +9,37 @@ CREATE TABLE IF NOT EXISTS public.node (
   topicid	TEXT,	-- comma delimited string array
   dbpedia	TEXT,
   wikidata 	TEXT,
-  tense		TEXT,	--eg past
+--  tense		TEXT,	--eg past
   negation	BOOLEAN DEFAULT false,
-  epi		TEXT,	-- null , speculative, ...
+--  epi		TEXT,	-- null , speculative, ...
   active	BIGINT REFERENCES  public.node (id),
   cannon	BIGINT REFERENCES  public.node (id)
 );
 CREATE INDEX IF NOT EXISTS node_idx ON public.node (id);
 
-CREATE TABLE IF NOT EXISTS public.inlinks (
-  	id BIGINT PRIMARY KEY NOT NULL REFERENCES  public.node (id),
-  	isentenceId	TEXT NOT NULL,
-  	itargetId	TEXT NOT NULL
-);
-CREATE INDEX IF NOT EXISTS inlinks_idx ON public.inlinks (id, isentenceId);
 
-CREATE TABLE IF NOT EXISTS public.outlinks (
-  	id BIGINT PRIMARY KEY NOT NULL REFERENCES  public.node (id),
-  	osentenceId	TEXT NOT NULL,
-  	otargetId	TEXT NOT NULL
+CREATE TABLE IF NOT EXISTS public.sentence_edges (
+  	id 		BIGINT PRIMARY KEY NOT NULL REFERENCES  public.node (id),
+  	tense	TEXT,	--eg past
+  	epi		TEXT,	-- null , speculative, ...
+	in_lnk	BIGINT  REFERENCES  public.node (id),
+	out_lnk	BIGINT  REFERENCES  public.node (id)
 );
-CREATE INDEX IF NOT EXISTS outlinks_idx ON public.outlinks (id, osentenceId);
+CREATE INDEX IF NOT EXISTS sedge_idx ON public.sentence_edges (id, in_lnk, out_lnk);
+
+--CREATE TABLE IF NOT EXISTS public.inlinks (
+--  	id BIGINT PRIMARY KEY NOT NULL REFERENCES  public.node (id),
+--  	isentenceId	TEXT NOT NULL,
+--  	itargetId	TEXT NOT NULL
+--);
+--CREATE INDEX IF NOT EXISTS inlinks_idx ON public.inlinks (id, isentenceId);
+
+--CREATE TABLE IF NOT EXISTS public.outlinks (
+--  	id BIGINT PRIMARY KEY NOT NULL REFERENCES  public.node (id),
+--  	osentenceId	TEXT NOT NULL,
+--  	otargetId	TEXT NOT NULL
+--);
+--CREATE INDEX IF NOT EXISTS outlinks_idx ON public.outlinks (id, osentenceId);
 
 -- for expansion as needed = keys in this table need to be distinctive, e.g. starting with a "_" 
 CREATE TABLE IF NOT EXISTS public.properties (
