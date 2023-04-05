@@ -6,8 +6,9 @@
 package org.topicquests.newasr.impl;
 
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Properties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.topicquests.newasr.api.IASREnvironment;
 import org.topicquests.newasr.api.IExpectationTypes;
 import org.topicquests.newasr.kafka.CommonKafkaProducer;
@@ -15,6 +16,7 @@ import org.topicquests.newasr.util.ConfigurationHelper;
 import org.topicquests.newasr.util.Configurator;
 
 import com.google.gson.JsonObject;
+
 
 /**
  * @author jackpark
@@ -38,8 +40,10 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	 */
 	public ASRBaseEnvironment(String propertyPath, String loggerPath) {
 		configPathHelper = new ConfigurationHelper();
-		System.setProperty(configPathHelper.findPath("logconfig.xml"), loggerPath);
-		LOG = LoggerFactory.getLogger(ASRBaseEnvironment.class);
+		//Properties props = System.getProperties();
+
+		//props.setProperty("log4j2.configurationFile", configPathHelper.findPath(loggerPath));
+		LOG = LogManager.getLogger(ASRBaseEnvironment.class);
 		properties = Configurator.getProperties(propertyPath);
 		kafkaProperties = Configurator.getProperties("kafka-topics.xml");
 		EXPECTATION_TOPIC = getKafkaProperty("ExpectationFailureTopic");
