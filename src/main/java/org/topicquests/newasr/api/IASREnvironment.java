@@ -19,6 +19,9 @@ public interface IASREnvironment extends IEnvironment {
 	// Utilities
 	//////////
 	
+	void say(String journalMessage);
+	
+	
 	Map<String, Object> getProperties();
 	
 	/**
