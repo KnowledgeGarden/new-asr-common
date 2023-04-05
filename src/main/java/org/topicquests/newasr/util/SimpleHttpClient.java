@@ -21,8 +21,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.topicquests.newasr.api.IResult;
 import org.topicquests.support.ResultPojo;
+import org.topicquests.support.api.IResult;
 
 /**
  * 

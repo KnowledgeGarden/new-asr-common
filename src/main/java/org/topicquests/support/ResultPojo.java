@@ -15,7 +15,7 @@
  */
 package org.topicquests.support;
 
-import org.topicquests.newasr.api.IResult;
+import org.topicquests.support.api.IResult;
 
 /**
  * 

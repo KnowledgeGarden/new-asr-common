@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS public.node (
   topicid	TEXT,	-- comma delimited string array
   dbpedia	TEXT,
   wikidata 	TEXT,
---  tense		TEXT,	--eg past
+  tense		TEXT,	--eg past
   negation	BOOLEAN DEFAULT false,
---  epi		TEXT,	-- null , speculative, ...
+  epi		TEXT,	-- null , speculative, ...
   active	BIGINT REFERENCES  public.node (id),
   cannon	BIGINT REFERENCES  public.node (id)
 );
