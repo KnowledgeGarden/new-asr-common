@@ -16,9 +16,12 @@ import com.google.gson.JsonObject;
 public interface ISentence extends IAddressable {
 	public static final String
 		PARAGRAPH_ID	= "para_id",
-		DOCUMENT_ID	= "doc_id",
+		DOCUMENT_ID		= "doc_id",
 		TEXT_FIELD		= "txt",
 		PRED_FIELD		= "preds",
+		NOUN_FIELD		= "noun",
+		PNOUN_FIELD		= "pnoun",
+		VERB_FIELD		= "verb",
 		SPACY_FiELD		= "spacy",	//JSON blob from spacy POS
 		WD_FIELD		= "wd",		//Wikidata identities
 		DBP_FIELD		= "dbp"; 	//DBpedia blobs
@@ -72,6 +75,29 @@ public interface ISentence extends IAddressable {
 	
 	//void addDBpediaData(String dbpJson);
 	void setDBpediaData(JsonArray dbpedia);
+	
+	void addNoun(String noun);
+	/**
+	 * Can return @code null}
+	 * @return
+	 */
+	JsonArray getNouns();
+	
+	void addProperNoun(String noun);
+	/**
+	 * Can return @code null}
+	 * @return
+	 */
+	JsonArray getProperNouns();
+
+	void addVerb(String verb);
+	/**
+	 * Can return @code null}
+	 * @return
+	 */
+	JsonArray getVerbs();
+
+	
 	
 	/**
 	 * Can return {@code null}

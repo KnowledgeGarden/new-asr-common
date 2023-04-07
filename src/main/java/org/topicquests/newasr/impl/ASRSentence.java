@@ -127,6 +127,66 @@ public class ASRSentence implements ISentence {
 			return je.getAsJsonArray();
 		return null;
 	}
+
+	@Override
+	public void addNoun(String noun) {
+		JsonElement je = data.get(ISentence.NOUN_FIELD);
+		JsonArray ja;
+		if (je != null) {
+			ja = new JsonArray();
+			data.add(ISentence.NOUN_FIELD, ja);
+		} else
+			ja = je.getAsJsonArray();
+		ja.add(noun);	
+	}
+
+	@Override
+	public JsonArray getNouns() {
+		JsonElement je = data.get(ISentence.NOUN_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;
+	}
+
+	@Override
+	public void addProperNoun(String noun) {
+		JsonElement je = data.get(ISentence.PNOUN_FIELD);
+		JsonArray ja;
+		if (je != null) {
+			ja = new JsonArray();
+			data.add(ISentence.PNOUN_FIELD, ja);
+		} else
+			ja = je.getAsJsonArray();
+		ja.add(noun);
+	}
+
+	@Override
+	public JsonArray getProperNouns() {
+		JsonElement je = data.get(ISentence.PNOUN_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;
+	}
+
+	@Override
+	public void addVerb(String verb) {
+		JsonElement je = data.get(ISentence.VERB_FIELD);
+		JsonArray ja;
+		if (je != null) {
+			ja = new JsonArray();
+			data.add(ISentence.VERB_FIELD, ja);
+		} else
+			ja = je.getAsJsonArray();
+		ja.add(verb);
+	}
+
+	@Override
+	public JsonArray getVerbs() {
+		JsonElement je = data.get(ISentence.VERB_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;
+	}
 	
 
 }
