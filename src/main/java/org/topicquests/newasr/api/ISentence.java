@@ -76,21 +76,21 @@ public interface ISentence extends IAddressable {
 	//void addDBpediaData(String dbpJson);
 	void setDBpediaData(JsonArray dbpedia);
 	
-	void addNoun(String noun);
+	void setNoun(JsonArray noun);
 	/**
 	 * Can return @code null}
 	 * @return
 	 */
 	JsonArray getNouns();
 	
-	void addProperNoun(String noun);
+	void setProperNoun(JsonArray noun);
 	/**
 	 * Can return @code null}
 	 * @return
 	 */
 	JsonArray getProperNouns();
 
-	void addVerb(String verb);
+	void setVerb(JsonArray verb);
 	/**
 	 * Can return @code null}
 	 * @return

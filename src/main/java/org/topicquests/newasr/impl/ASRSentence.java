@@ -129,15 +129,8 @@ public class ASRSentence implements ISentence {
 	}
 
 	@Override
-	public void addNoun(String noun) {
-		JsonElement je = data.get(ISentence.NOUN_FIELD);
-		JsonArray ja;
-		if (je != null) {
-			ja = new JsonArray();
-			data.add(ISentence.NOUN_FIELD, ja);
-		} else
-			ja = je.getAsJsonArray();
-		ja.add(noun);	
+	public void setNoun(JsonArray noun) {
+		data.add(ISentence.NOUN_FIELD, noun);
 	}
 
 	@Override
@@ -149,15 +142,8 @@ public class ASRSentence implements ISentence {
 	}
 
 	@Override
-	public void addProperNoun(String noun) {
-		JsonElement je = data.get(ISentence.PNOUN_FIELD);
-		JsonArray ja;
-		if (je != null) {
-			ja = new JsonArray();
-			data.add(ISentence.PNOUN_FIELD, ja);
-		} else
-			ja = je.getAsJsonArray();
-		ja.add(noun);
+	public void setProperNoun(JsonArray noun) {
+		data.add(ISentence.PNOUN_FIELD, noun);
 	}
 
 	@Override
@@ -169,15 +155,8 @@ public class ASRSentence implements ISentence {
 	}
 
 	@Override
-	public void addVerb(String verb) {
-		JsonElement je = data.get(ISentence.VERB_FIELD);
-		JsonArray ja;
-		if (je != null) {
-			ja = new JsonArray();
-			data.add(ISentence.VERB_FIELD, ja);
-		} else
-			ja = je.getAsJsonArray();
-		ja.add(verb);
+	public void setVerb(JsonArray verb) {
+		data.add(ISentence.VERB_FIELD, verb);
 	}
 
 	@Override
