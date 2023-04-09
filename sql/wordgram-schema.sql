@@ -19,7 +19,8 @@ CREATE INDEX IF NOT EXISTS node_idx ON public.node (id);
 
 
 CREATE TABLE IF NOT EXISTS public.sentence_edges (
-  	id 		BIGINT PRIMARY KEY NOT NULL REFERENCES  public.node (id),
+  	id 		BIGINT PRIMARY KEY NOT NULL REFERENCES  public.node (id), --wordgram id
+  	sent_id	BIGINT NOT NULL,  -- sentenceId
   	tense	TEXT,	--eg past
   	epi		TEXT,	-- null , speculative, ...
 	in_lnk	BIGINT  REFERENCES  public.node (id),
