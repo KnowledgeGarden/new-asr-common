@@ -153,6 +153,18 @@ public class ASRSentence implements ISentence {
 			return je.getAsJsonArray();
 		return null;
 	}
+	@Override
+	public void setResolvedNouns(JsonArray nouns) {
+		data.add(ISentence.RESNOUN_FIELD, nouns);
+	}
+
+	@Override
+	public JsonArray getResolvedNouns() {
+		JsonElement je = data.get(ISentence.RESNOUN_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;
+	}
 
 	@Override
 	public void setVerb(JsonArray verb) {
@@ -166,6 +178,7 @@ public class ASRSentence implements ISentence {
 			return je.getAsJsonArray();
 		return null;
 	}
+
 	
 
 }

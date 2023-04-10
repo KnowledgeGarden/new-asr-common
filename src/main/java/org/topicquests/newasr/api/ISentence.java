@@ -20,7 +20,8 @@ public interface ISentence extends IAddressable {
 		TEXT_FIELD		= "txt",
 		PRED_FIELD		= "preds",
 		NOUN_FIELD		= "noun",
-		PNOUN_FIELD		= "pnoun",
+		PNOUN_FIELD		= "pnoun",	// proper nouns
+		RESNOUN_FIELD	= "rnoun", 	// resolved nouns
 		VERB_FIELD		= "verb",
 		SPACY_FiELD		= "spacy",	//JSON blob from spacy POS
 		WD_FIELD		= "wd",		//Wikidata identities
@@ -97,7 +98,13 @@ public interface ISentence extends IAddressable {
 	 */
 	JsonArray getVerbs();
 
+	void setResolvedNouns(JsonArray nouns);
 	
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	JsonArray getResolvedNouns();
 	
 	/**
 	 * Can return {@code null}
