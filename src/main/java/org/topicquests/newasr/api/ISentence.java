@@ -57,13 +57,13 @@ public interface ISentence extends IAddressable {
 	JsonArray getPredicatePhrases();
 	
 	
-	void setSpacyData(String spacyJson);
+	void setSpacyData(JsonObject spacyJson);
 	
 	/**
 	 * Can return {@code null}
 	 * @return
 	 */
-	String getSpacyData();
+	JsonObject getSpacyData();
 	
 	//void addWikidataId(String wikidata);
 	void setWikiData(JsonArray wikidata);

@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXiSTS public.sentenceids  (
 	id 			BIGINT PRIMARY KEY NOT NULL REFERENCES  public.triple (id),
 	sentence_id	BIGINT NOT NULL
 );
+CREATE INDEX IF NOT EXISTS sent_idx ON public.sentenceids (id, sentence_id);
 
 -- Working Triples are those which are not normalized
 -- they do not get sentence links
