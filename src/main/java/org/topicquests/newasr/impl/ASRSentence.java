@@ -90,15 +90,15 @@ public class ASRSentence implements ISentence {
 	}
 
 	@Override
-	public void setSpacyData(JsonObject spacyJson) {
+	public void setSpacyData(JsonArray spacyJson) {
 		data.add(ISentence.SPACY_FiELD, spacyJson);
 	}
 
 	@Override
-	public JsonObject getSpacyData() {
+	public JsonArray getSpacyData() {
 		JsonElement je = data.get(ISentence.SPACY_FiELD);
 		if (je != null)
-			return je.getAsJsonObject();
+			return je.getAsJsonArray();
 		return null;
 	}
 
