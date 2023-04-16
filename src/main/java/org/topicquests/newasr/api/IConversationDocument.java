@@ -9,6 +9,6 @@ package org.topicquests.newasr.api;
  * @author jackpark
  *
  */
-public interface IConversation {
+public interface IConversationDocument extends IAddressable {
 
 }
