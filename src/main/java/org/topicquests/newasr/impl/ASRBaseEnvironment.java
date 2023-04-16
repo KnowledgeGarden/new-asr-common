@@ -24,6 +24,8 @@ import com.google.gson.JsonObject;
 public abstract class ASRBaseEnvironment implements IASREnvironment {
 	private final Logger LOG;
 	private Map<String, Object> properties;
+	private Map<String, Object> commonProperties;
+
 	private Map<String, Object> kafkaProperties = null;
 	private CommonKafkaProducer kafkaProducer;
 	//private ConfigurationHelper configPathHelper;
@@ -42,10 +44,19 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 		EXPECTATION_TOPIC = getKafkaProperty("ExpectationFailureTopic");
 		SENTENCE_KEY = "data"; 		//TODO FIXME
 		partition = new Integer(0);	//TODO FiXME
+		commonProperties = Configurator.getProperties("asr-common-config.xml");
 
 
 		kafkaProducer = new CommonKafkaProducer(this, AGENT_GROUP);
 
+	}
+	
+	public Map<String,Object> getCommonProperties() {
+		return commonProperties;
+	}
+	
+	public String getStringCommonPropety(String key) {
+		return (String)commonProperties.get(key);
 	}
 	
 	public CommonKafkaProducer getSentenceProducer() {
