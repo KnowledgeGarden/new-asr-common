@@ -25,8 +25,9 @@ public interface ISentence extends IAddressable {
 		VERB_FIELD		= "verb",
 		SPACY_FiELD		= "spacy",	//JSON blob from spacy POS
 		WD_FIELD		= "wd",		//Wikidata identities
-		DBP_FIELD		= "dbp"; 	//DBpedia blobs
-
+		DBP_FIELD		= "dbp", 	//DBpedia blobs
+		TRIPLE_FIELD	= "trpl";
+	
 	JsonObject getData();
 	
 	void setParagraphId(long id);
@@ -111,4 +112,14 @@ public interface ISentence extends IAddressable {
 	 * @return
 	 */
 	JsonArray getDBpediaData();
+	
+	void addSimpleTriple(JsonObject trip);
+	
+	void setSimpleTriples(JsonArray triples);
+	
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	JsonArray getSimpleTriples();
 }

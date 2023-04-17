@@ -179,6 +179,29 @@ public class ASRSentence implements ISentence {
 		return null;
 	}
 
+	@Override
+	public void addSimpleTriple(JsonObject trip) {
+		JsonArray trips = getSimpleTriples();
+		if (trips == null) {
+			trips = new JsonArray();
+			setSimpleTriples(trips);
+		}
+		trips.add(trip);
+	}
+
+	@Override
+	public void setSimpleTriples(JsonArray triples) {
+		data.add(ISentence.TRIPLE_FIELD, triples);
+	}
+
+	@Override
+	public JsonArray getSimpleTriples() {
+		JsonElement je = data.get(ISentence.TRIPLE_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;
+	}
+
 	
 
 }
