@@ -26,7 +26,9 @@ public interface ISentence extends IAddressable {
 		SPACY_FiELD		= "spacy",	//JSON blob from spacy POS
 		WD_FIELD		= "wd",		//Wikidata identities
 		DBP_FIELD		= "dbp", 	//DBpedia blobs
-		TRIPLE_FIELD	= "trpl";
+		TRIPLE_FIELD	= "trpl",
+		CONJUNCT_FIELD	= "conj",
+		DISJUNCT_FIELD	= "disj";
 	
 	JsonObject getData();
 	
@@ -122,4 +124,20 @@ public interface ISentence extends IAddressable {
 	 * @return
 	 */
 	JsonArray getSimpleTriples();
+	
+	void addConjunct(JsonObject conj);
+	void setConjuncts(JsonArray conjs);
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	JsonArray getConjuncts();
+	
+	void addDisjunct(JsonObject disj);
+	void setDisjuncts(JsonArray disjs);
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	JsonArray getDisjuncts();
 }

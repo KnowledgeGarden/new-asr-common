@@ -202,6 +202,53 @@ public class ASRSentence implements ISentence {
 		return null;
 	}
 
+	@Override
+	public void addConjunct(JsonObject conj) {
+		JsonArray cons = getConjuncts();
+		if (cons == null) {
+			cons = new JsonArray();
+			setConjuncts(cons);
+		}
+		cons.add(conj);
+	}
+
+	@Override
+	public void setConjuncts(JsonArray conjs) {
+		data.add(ISentence.CONJUNCT_FIELD, conjs);
+	}
+
+	@Override
+	public JsonArray getConjuncts() {
+		JsonElement je = data.get(ISentence.CONJUNCT_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;	
+	}
+
+	@Override
+	public void addDisjunct(JsonObject disj) {
+		JsonArray dis = getDisjuncts();
+		if (dis == null) {
+			dis = new JsonArray();
+			setDisjuncts(dis);
+		}
+		dis.add(disj);
+	}
+
+	@Override
+	public void setDisjuncts(JsonArray disjs) {
+		data.add(ISentence.DISJUNCT_FIELD, disjs);
+		
+	}
+
+	@Override
+	public JsonArray getDisjuncts() {
+		JsonElement je = data.get(ISentence.DISJUNCT_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;	
+	}
+
 	
 
 }
