@@ -249,6 +249,18 @@ public class ASRSentence implements ISentence {
 		return null;	
 	}
 
+	@Override
+	public boolean hasDisjuncts() {
+		JsonArray ja = this.getDisjuncts();
+		return (ja != null && !ja.isEmpty());
+	}
+
+	@Override
+	public boolean hasConjuncts() {
+		JsonArray ja = this.getConjuncts();
+		return (ja != null && !ja.isEmpty());
+	}
+
 	
 
 }

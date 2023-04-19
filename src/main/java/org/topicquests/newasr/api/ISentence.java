@@ -140,4 +140,8 @@ public interface ISentence extends IAddressable {
 	 * @return
 	 */
 	JsonArray getDisjuncts();
+	
+	boolean hasDisjuncts();
+	
+	boolean hasConjuncts();
 }
