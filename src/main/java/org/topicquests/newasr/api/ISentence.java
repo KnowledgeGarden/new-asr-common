@@ -28,7 +28,8 @@ public interface ISentence extends IAddressable {
 		DBP_FIELD		= "dbp", 	//DBpedia blobs
 		TRIPLE_FIELD	= "trpl",
 		CONJUNCT_FIELD	= "conj",
-		DISJUNCT_FIELD	= "disj";
+		DISJUNCT_FIELD	= "disj",
+		NOMINAL_FIELD	= "nom"; 	// e.g. "pandemic of"
 	
 	JsonObject getData();
 	
@@ -144,4 +145,14 @@ public interface ISentence extends IAddressable {
 	boolean hasDisjuncts();
 	
 	boolean hasConjuncts();
+	
+	void addNominalPhrae(JsonObject nom);
+	void setNominalPhrases(JsonArray noms);
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */	
+	JsonArray getNominalPhrases();
+	
+	boolean hasNominals();
 }

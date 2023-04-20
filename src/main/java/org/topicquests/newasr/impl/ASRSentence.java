@@ -238,7 +238,6 @@ public class ASRSentence implements ISentence {
 	@Override
 	public void setDisjuncts(JsonArray disjs) {
 		data.add(ISentence.DISJUNCT_FIELD, disjs);
-		
 	}
 
 	@Override
@@ -258,6 +257,35 @@ public class ASRSentence implements ISentence {
 	@Override
 	public boolean hasConjuncts() {
 		JsonArray ja = this.getConjuncts();
+		return (ja != null && !ja.isEmpty());
+	}
+
+	@Override
+	public void addNominalPhrae(JsonObject nom) {
+		JsonArray dis = getNominalPhrases();
+		if (dis == null) {
+			dis = new JsonArray();
+			setNominalPhrases(dis);
+		}
+		dis.add(nom);
+	}
+
+	@Override
+	public void setNominalPhrases(JsonArray noms) {
+		data.add(ISentence.NOMINAL_FIELD, noms);
+	}
+
+	@Override
+	public JsonArray getNominalPhrases() {
+		JsonElement je = data.get(ISentence.NOMINAL_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;	
+	}
+
+	@Override
+	public boolean hasNominals() {
+		JsonArray ja = this.getNominalPhrases();
 		return (ja != null && !ja.isEmpty());
 	}
 
