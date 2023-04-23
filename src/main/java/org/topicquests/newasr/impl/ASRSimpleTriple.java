@@ -136,4 +136,9 @@ public class ASRSimpleTriple implements ISimpleTriple {
 		this.setPSI(PSI);
 		
 	}
+
+	@Override
+	public JsonObject getData() {
+		return data;
+	}
 }

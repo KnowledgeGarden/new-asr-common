@@ -6,6 +6,7 @@
 package org.topicquests.newasr.api;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 /**
  * @author jackpark
@@ -61,5 +62,7 @@ public interface ISimpleTriple extends IAddressable {
 	long getNormalizedTripleId();
 	
 	void computePSI();
+	
+	JsonObject getData();
 
 }
