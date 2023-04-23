@@ -10,6 +10,7 @@ package org.topicquests.newasr.api;
  * All features use BIGINTs as database identifiers
  */
 public interface IAddressable {
+	public static final String ID_KEY = "id";
 
 	void setId(long id);
 	

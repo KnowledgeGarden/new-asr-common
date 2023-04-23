@@ -22,27 +22,29 @@ public interface ISimpleTriple extends IAddressable {
 		OBJ_KEY				= "obj",
 		OBJ_TYP_KEY			= "objT",
 		PSI_KEY				= "psi",
-		NORMALIZED_ID_KEY	= "norm";
+		NORMALIZED_ID_KEY	= "norm",
+		SENTENCE_KEY		= "sent";
 	
 	/**
 	 * 
-	 * @param subj
+	 * @param id
 	 * @param type can not be {@code null}
 	 */
-	void setSubject(Object subj, String type);
+	void setSubjectId(long id, String type);
 	
 	/**
 	 * Must use object type to cast result
 	 * @return
 	 */
-	Object getSubject();
+	long getSubjectId();
 	String getSubjectType()
 ;	
-	long setPredicateId(long id);
+	void setPredicateId(long id);
 	long getPredicateId();
 	
-;	void setObject(Object obj, String type);
-	Object getObject();
+;	void setObjectId(long id, String type);
+	//Object getObject();
+	long getObjectId();
 	String getObjectType();
 	
 	void addSentenceId(long sentenceId);
@@ -57,5 +59,7 @@ public interface ISimpleTriple extends IAddressable {
 	 * @return
 	 */
 	long getNormalizedTripleId();
+	
+	void computePSI();
 
 }
