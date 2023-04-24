@@ -51,8 +51,8 @@ public interface ISimpleTriple extends IAddressable {
 	void addSentenceId(long sentenceId);
 	JsonArray listSentenceIds();
 	
-	void setPSI(String psi);
-	String getPSI();
+	//void setPSI(String psi);
+	//String getPSI();
 	
 	void setNormalizedTripleId(long id);
 	/**
@@ -61,7 +61,7 @@ public interface ISimpleTriple extends IAddressable {
 	 */
 	long getNormalizedTripleId();
 	
-	void computePSI();
+	//void computePSI();
 	
 	JsonObject getData();
 

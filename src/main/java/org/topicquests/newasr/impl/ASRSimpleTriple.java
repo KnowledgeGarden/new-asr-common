@@ -81,7 +81,7 @@ public class ASRSimpleTriple implements ISimpleTriple {
 			return je.getAsJsonArray();
 		return null;
 	}
-
+/*
 	@Override
 	public void setPSI(String psi) {
 		data.addProperty(ISimpleTriple.PSI_KEY, psi);
@@ -91,7 +91,7 @@ public class ASRSimpleTriple implements ISimpleTriple {
 	public String getPSI() {
 		return data.get(ISimpleTriple.PSI_KEY).getAsString();
 	}
-
+*/
 	@Override
 	public void setNormalizedTripleId(long id) {
 		data.addProperty(ISimpleTriple.NORMALIZED_ID_KEY, new Long(id));
@@ -124,7 +124,7 @@ public class ASRSimpleTriple implements ISimpleTriple {
 		return data.get(ISimpleTriple.OBJ_KEY).getAsJsonPrimitive().getAsLong();
 	}
 
-	@Override
+/*	@Override
 	public void computePSI() {
 		long sid = this.getSubjectId();
 		String styp = this.getSubjectType();
@@ -136,7 +136,7 @@ public class ASRSimpleTriple implements ISimpleTriple {
 		this.setPSI(PSI);
 		
 	}
-
+*/
 	@Override
 	public JsonObject getData() {
 		return data;
