@@ -15,7 +15,10 @@ CREATE TABLE IF NOT EXISTS public.triple (
 	pred_id	BIGINT NOT NULL,
 	obj_id	BIGINT NOT NULL,
 	subj_typ 	TEXT NOT NULL,
-	obj_typ		TEXT NOT NULL
+	obj_typ		TEXT NOT NULL,
+	subj_txt	TEXT NOT NULL,
+	pred_txt	TEXT NOT NULL,
+	obj_txt		TEXT NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS triple_idx ON public.triple (id, subj_id, obj_id, subj_typ, obj_typ);

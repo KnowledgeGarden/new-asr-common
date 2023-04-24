@@ -124,21 +124,38 @@ public class ASRSimpleTriple implements ISimpleTriple {
 		return data.get(ISimpleTriple.OBJ_KEY).getAsJsonPrimitive().getAsLong();
 	}
 
-/*	@Override
-	public void computePSI() {
-		long sid = this.getSubjectId();
-		String styp = this.getSubjectType();
-		long predId = this.getPredicateId();
-		long oid = this.getObjectId();
-		String otyp = this.getObjectType();
-		
-		String PSI = Long.toString(sid)+styp+Long.toString(predId)+Long.toString(oid)+otyp;
-		this.setPSI(PSI);
-		
-	}
-*/
 	@Override
 	public JsonObject getData() {
 		return data;
+	}
+
+	@Override
+	public void setSubjectText(String text) {
+		data.addProperty(ISimpleTriple.SUBJ_TXT_KEY, text);
+	}
+
+	@Override
+	public String getSubjectText() {
+		return data.get(ISimpleTriple.SUBJ_TXT_KEY).getAsString();
+	}
+
+	@Override
+	public void setPredicateText(String text) {
+		data.addProperty(ISimpleTriple.PRED_TXT_KEY, text);
+	}
+
+	@Override
+	public String getPredicateText() {
+		return data.get(ISimpleTriple.PRED_TXT_KEY).getAsString();
+	}
+
+	@Override
+	public void setObjectText(String text) {
+		data.addProperty(ISimpleTriple.OBJ_TXT_KEY, text);
+	}
+
+	@Override
+	public String getObjectText() {
+		return data.get(ISimpleTriple.OBJ_TXT_KEY).getAsString();
 	}
 }
