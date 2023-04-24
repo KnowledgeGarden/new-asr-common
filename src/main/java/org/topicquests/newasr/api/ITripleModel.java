@@ -24,4 +24,15 @@ public interface ITripleModel {
 	IResult listTripleIds();
 	
 	IResult listTriplesBySentenceId(long sentenceId);
+	
+	IResult putWorkingTriple(ISimpleTriple t);
+	
+	/**
+	 * Can return null if this {@code template does not exist}
+	 * @param template
+	 * @return
+	 */
+	IResult getThisWorkingTriple(ISimpleTriple template);
+	
+	IResult updateWorkingTriple(ISimpleTriple template, long normalTripleId);
 }
