@@ -7,3 +7,11 @@ psql asrtest -f wordgram-schema.sql
 TRIPLES
 create database tripletest owner tq_admin;
 psql tripletest -f triple-schema.sql
+
+
+BIGJUICE
+create database bigjuice owner tq_admin;
+psql bigjuice -f document-schema.sql
+psql bigjuice -f paragraph-schema.sql
+psql bigjuice -f sentence-schema.sql
+psql bigjuice -f triple-schema.sql
