@@ -25,6 +25,8 @@ CREATE TABLE IF NOT EXISTS public.triple (
 
 CREATE INDEX IF NOT EXISTS triple_idx ON public.triple (id, wg_subj_id, tr_subj_id,
 		wg_pred_id, wg_obj_id, tr_obj_id);
+CREATE INDEX IF NOT EXISTS triple_tr_obj_idx ON public.triple(tr_obj_id);
+CREATE INDEX IF NOT EXISTS triple_tr_subj_idx ON public.triple(tr_subj_id);
 
 CREATE TABLE IF NOT EXiSTS public.sentenceids  (
 	id 			BIGINT NOT NULL REFERENCES  public.sentence (id),
@@ -53,3 +55,5 @@ CREATE TABLE IF NOT EXISTS public.working_triple (
 
 CREATE INDEX IF NOT EXISTS wtriple_idx ON public.working_triple (id, wg_subj_id, tr_subj_id,
 		wg_pred_id, wg_obj_id, tr_obj_id);
+CREATE INDEX IF NOT EXISTS wtriple_tr_obj_idx ON public.working_triple(tr_obj_id);
+CREATE INDEX IF NOT EXISTS wtriple_tr_subj_idx ON public.working_triple(tr_subj_id);
