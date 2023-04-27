@@ -14,5 +14,5 @@ create database bigjuice owner tq_admin;
 psql bigjuice -f document-schema.sql
 psql bigjuice -f paragraph-schema.sql
 psql bigjuice -f sentence-schema.sql
+psql bigjuice -f wordgram-schema.sql
 psql bigjuice -f triple-schema.sql
-///psql bigjuice -f wordgram-schema.sql

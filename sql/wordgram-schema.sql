@@ -4,7 +4,7 @@ SET ROLE tq_admin;
 -- words in a wordgram
 CREATE TABLE IF NOT EXISTS public.node (
   id 		BIGINT PRIMARY KEY NOT NULL,
-  words 	TEXT NOT NULL,
+  words 	TEXT UNIQUE NOT NULL,
   pos		TEXT,	-- comma delimited string array
   topicid	TEXT,	-- comma delimited string array
   dbpedia	TEXT,
