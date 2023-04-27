@@ -19,12 +19,12 @@ public interface ISimpleTriple extends IAddressable {
 	public static final String
 		WG_SUBJ_KEY			= "w_subj",
 		TR_SUBJ_KEY			= "t_subj",
-//		SUBJ_TXT_KEY		= "subjTX",
+		SUBJ_TXT_KEY		= "subjTX",
 		PRED_KEY			= "pred",
-//		PRED_TXT_KEY		= "predTX",
+		PRED_TXT_KEY		= "predTX",
 		WG_OBJ_KEY			= "w_obj",
 		TR_OBJ_KEY			= "t_obj",
-//		OBJ_TXT_KEY			= "objTX",
+		OBJ_TXT_KEY			= "objTX",
 //		PSI_KEY				= "psi",
 		NORMALIZED_ID_KEY	= "norm",
 		SENTENCE_KEY		= "sent";
@@ -36,7 +36,8 @@ public interface ISimpleTriple extends IAddressable {
 	 */
 	void setWgSubjectId(long id);
 	void setTrSubjectId(long id);
-	//String getSubjectText();
+	String getSubjectText();
+	void setSubjectText(String text);
 	/**
 	 * Must use object type to cast result
 	 * @return
@@ -47,12 +48,13 @@ public interface ISimpleTriple extends IAddressable {
 
 	void setPredicateId(long id);
 	long getPredicateId();
-	//void setPredicateText(String text);
-	//String getPredicateText();
+	void setPredicateText(String text);
+	String getPredicateText();
 	
 ;	void setWgObjectId(long id);
 	void setTrObjectId(long id);
-	//String getObjectText();
+	String getObjectText();
+	void setObjectText(String text);
 	//Object getObject();
 	long getWgObjectId();
 	//String getObjectType();

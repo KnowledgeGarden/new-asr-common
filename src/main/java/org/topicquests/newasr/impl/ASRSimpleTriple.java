@@ -41,11 +41,6 @@ public class ASRSimpleTriple implements ISimpleTriple {
 	}
 
 
-	//@Override
-	//public String getSubjectType() {
-	//	return data.get(ISimpleTriple.SUBJ_TYP_KEY).getAsString();
-	//}
-
 	@Override
 	public void setPredicateId(long id) {
 		data.addProperty(ISimpleTriple.PRED_KEY, new Long(id));
@@ -142,7 +137,7 @@ public class ASRSimpleTriple implements ISimpleTriple {
 		return data;
 	}
 
-/*	@Override
+	@Override
 	public void setSubjectText(String text) {
 		data.addProperty(ISimpleTriple.SUBJ_TXT_KEY, text);
 	}
@@ -170,5 +165,5 @@ public class ASRSimpleTriple implements ISimpleTriple {
 	@Override
 	public String getObjectText() {
 		return data.get(ISimpleTriple.OBJ_TXT_KEY).getAsString();
-	}*/
+	}
 }
