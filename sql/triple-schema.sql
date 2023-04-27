@@ -25,7 +25,10 @@ CREATE INDEX IF NOT EXISTS triple_idx ON public.triple (id, subj_id, obj_id, sub
 
 CREATE TABLE IF NOT EXiSTS public.sentenceids  (
 	id 			BIGINT NOT NULL REFERENCES  public.sentence (id),
-	sentence_id	BIGINT NOT NULL
+	sentence_id	BIGINT NOT NULL,
+	CONSTRAINT fk_sentence
+      FOREIGN KEY(sentence_id) 
+	  REFERENCES public.sentence(id)
 );
 CREATE INDEX IF NOT EXISTS sent_idx ON public.sentenceids (id, sentence_id);
 
