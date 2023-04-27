@@ -10,7 +10,7 @@ SET ROLE tq_admin;
 
 
 CREATE TABLE IF NOT EXISTS public.triple (
-	id 		BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('public.triple_id_seq'::regclass),
+	id 		BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('public.topic_id_seq'::regclass),
 	wg_subj_id BIGINT ,
 	tr_subj_id BIGINT ,
 	wg_pred_id BIGINT NOT NULL,
@@ -40,7 +40,7 @@ CREATE INDEX IF NOT EXISTS sent_idx ON public.sentenceids (id, sentence_id);
 -- Working Triples are those which are not normalized
 -- they do not get sentence links
 CREATE TABLE IF NOT EXISTS public.working_triple (
-	id 		BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('public.triple_id_seq'::regclass),
+	id 		BIGINT PRIMARY KEY NOT NULL DEFAULT nextval('public.topic_id_seq'::regclass),
 	wg_subj_id BIGINT ,
 	tr_subj_id BIGINT ,
 	wg_pred_id BIGINT NOT NULL,
