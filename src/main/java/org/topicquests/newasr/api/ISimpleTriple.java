@@ -13,19 +13,19 @@ import com.google.gson.JsonObject;
  *
  */
 public interface ISimpleTriple extends IAddressable {
+//	public static final String
+//		WORDGRAM_TYPE		= "wgt",
+//		TRIPLE_TYPE			= "tplt";
 	public static final String
-		WORDGRAM_TYPE		= "wgt",
-		TRIPLE_TYPE			= "tplt";
-	public static final String
-		SUBJ_KEY			= "subj",
-		SUBJ_TYP_KEY		= "subjT",
-		SUBJ_TXT_KEY		= "subjTX",
+		WG_SUBJ_KEY			= "w_subj",
+		TR_SUBJ_KEY			= "t_subj",
+//		SUBJ_TXT_KEY		= "subjTX",
 		PRED_KEY			= "pred",
-		PRED_TXT_KEY		= "predTX",
-		OBJ_KEY				= "obj",
-		OBJ_TYP_KEY			= "objT",
-		OBJ_TXT_KEY			= "objTX",
-		PSI_KEY				= "psi",
+//		PRED_TXT_KEY		= "predTX",
+		WG_OBJ_KEY			= "w_obj",
+		TR_OBJ_KEY			= "t_obj",
+//		OBJ_TXT_KEY			= "objTX",
+//		PSI_KEY				= "psi",
 		NORMALIZED_ID_KEY	= "norm",
 		SENTENCE_KEY		= "sent";
 	
@@ -34,27 +34,29 @@ public interface ISimpleTriple extends IAddressable {
 	 * @param id
 	 * @param type can not be {@code null}
 	 */
-	void setSubjectId(long id, String type);
-	void setSubjectText(String text);
-	String getSubjectText();
+	void setWgSubjectId(long id);
+	void setTrSubjectId(long id);
+	//String getSubjectText();
 	/**
 	 * Must use object type to cast result
 	 * @return
 	 */
-	long getSubjectId();
-	String getSubjectType()
-;	
+	long getWgSubjectId();
+	//String getSubjectType()
+;	long getTrSubjectId();
+
 	void setPredicateId(long id);
 	long getPredicateId();
-	void setPredicateText(String text);
-	String getPredicateText();
+	//void setPredicateText(String text);
+	//String getPredicateText();
 	
-;	void setObjectId(long id, String type);
-	void setObjectText(String text);
-	String getObjectText();
+;	void setWgObjectId(long id);
+	void setTrObjectId(long id);
+	//String getObjectText();
 	//Object getObject();
-	long getObjectId();
-	String getObjectType();
+	long getWgObjectId();
+	//String getObjectType();
+	long getTrObjectId();
 	
 	void addSentenceId(long sentenceId);
 	JsonArray listSentenceIds();

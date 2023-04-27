@@ -41,10 +41,10 @@ public class ASRSimpleTriple implements ISimpleTriple {
 	}
 
 
-	@Override
-	public String getSubjectType() {
-		return data.get(ISimpleTriple.SUBJ_TYP_KEY).getAsString();
-	}
+	//@Override
+	//public String getSubjectType() {
+	//	return data.get(ISimpleTriple.SUBJ_TYP_KEY).getAsString();
+	//}
 
 	@Override
 	public void setPredicateId(long id) {
@@ -59,10 +59,10 @@ public class ASRSimpleTriple implements ISimpleTriple {
 
 
 
-	@Override
-	public String getObjectType() {
-		return data.get(ISimpleTriple.OBJ_TYP_KEY).getAsString();
-	}
+	//@Override
+	//public String getObjectType() {
+	//	return data.get(ISimpleTriple.OBJ_TYP_KEY).getAsString();
+	//}
 
 	@Override
 	public void addSentenceId(long sentenceId) {
@@ -103,25 +103,38 @@ public class ASRSimpleTriple implements ISimpleTriple {
 	}
 
 	@Override
-	public void setSubjectId(long id, String type) {
-		data.addProperty(ISimpleTriple.SUBJ_KEY, new Long(id));
-		data.addProperty(ISimpleTriple.SUBJ_TYP_KEY, type);
+	public void setWgSubjectId(long id) {
+		data.addProperty(ISimpleTriple.WG_SUBJ_KEY, new Long(id));
+	}
+	@Override
+	public void setTrSubjectId(long id) {
+		data.addProperty(ISimpleTriple.TR_SUBJ_KEY, new Long(id));
 	}
 
 	@Override
-	public long getSubjectId() {
-		return data.get(ISimpleTriple.SUBJ_KEY).getAsJsonPrimitive().getAsLong();
+	public long getWgSubjectId() {
+		return data.get(ISimpleTriple.WG_SUBJ_KEY).getAsJsonPrimitive().getAsLong();
+	}
+	@Override
+	public long getTrSubjectId() {
+		return data.get(ISimpleTriple.TR_SUBJ_KEY).getAsJsonPrimitive().getAsLong();
+	}
+	@Override
+	public void setWgObjectId(long id) {
+		data.addProperty(ISimpleTriple.WG_OBJ_KEY, new Long(id));
+	}
+	@Override
+	public void setTrObjectId(long id) {
+		data.addProperty(ISimpleTriple.TR_OBJ_KEY, new Long(id));
 	}
 
 	@Override
-	public void setObjectId(long id, String type) {
-		data.addProperty(ISimpleTriple.OBJ_KEY, new Long(id));
-		data.addProperty(ISimpleTriple.OBJ_TYP_KEY, type);
+	public long getWgObjectId() {
+		return data.get(ISimpleTriple.WG_OBJ_KEY).getAsJsonPrimitive().getAsLong();
 	}
-
 	@Override
-	public long getObjectId() {
-		return data.get(ISimpleTriple.OBJ_KEY).getAsJsonPrimitive().getAsLong();
+	public long getTrObjectId() {
+		return data.get(ISimpleTriple.TR_OBJ_KEY).getAsJsonPrimitive().getAsLong();
 	}
 
 	@Override
@@ -129,7 +142,7 @@ public class ASRSimpleTriple implements ISimpleTriple {
 		return data;
 	}
 
-	@Override
+/*	@Override
 	public void setSubjectText(String text) {
 		data.addProperty(ISimpleTriple.SUBJ_TXT_KEY, text);
 	}
@@ -157,5 +170,5 @@ public class ASRSimpleTriple implements ISimpleTriple {
 	@Override
 	public String getObjectText() {
 		return data.get(ISimpleTriple.OBJ_TXT_KEY).getAsString();
-	}
+	}*/
 }
