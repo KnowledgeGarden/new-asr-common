@@ -24,7 +24,7 @@ public interface ISimpleTriple extends IAddressable {
 		PRED_TXT_KEY		= "predTX",
 		OBJ_KEY				= "obj",
 		OBJ_TYP_KEY			= "objT",
-		OBJ_TXT_KEY			= "OBJTX",
+		OBJ_TXT_KEY			= "objTX",
 		PSI_KEY				= "psi",
 		NORMALIZED_ID_KEY	= "norm",
 		SENTENCE_KEY		= "sent";
