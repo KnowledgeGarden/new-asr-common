@@ -46,11 +46,14 @@ CREATE TABLE IF NOT EXISTS public.working_triple (
 	wg_pred_id BIGINT NOT NULL,
 	wg_obj_id  BIGINT ,
 	tr_obj_id  BIGINT ,
+	tr_norm_id BIGINT ,
 	CONSTRAINT triple_wg_subj_fk FOREIGN KEY (wg_subj_id) REFERENCES node(id),
 	CONSTRAINT triple_wg_pred_fk FOREIGN KEY (wg_pred_id) REFERENCES node(id),
 	CONSTRAINT triple_wg_obj_fk  FOREIGN KEY (wg_obj_id)  REFERENCES node(id),
 	CONSTRAINT triple_tr_subj_fk FOREIGN KEY (tr_subj_id) REFERENCES triple(id),
-	CONSTRAINT triple_tr_obj_fk  FOREIGN KEY (tr_obj_id)  REFERENCES triple(id)
+	CONSTRAINT triple_tr_obj_fk  FOREIGN KEY (tr_obj_id)  REFERENCES triple(id),
+	CONSTRAINT triple_tr_norm_fk  FOREIGN KEY (tr_norm_id)  REFERENCES triple(id)
+
 );
 
 CREATE INDEX IF NOT EXISTS wtriple_idx ON public.working_triple (id, wg_subj_id, tr_subj_id,
