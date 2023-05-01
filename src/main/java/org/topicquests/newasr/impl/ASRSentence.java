@@ -101,6 +101,21 @@ public class ASRSentence implements ISentence {
 			return je.getAsJsonArray();
 		return null;
 	}
+	
+	@Override
+	public void setSpacyConcepts(JsonArray concepts) {
+		data.add(ISentence.CONCEPT_FIELD, concepts);
+
+	}
+
+	@Override
+	public JsonArray getSpacyConcepts() {
+		JsonElement je = data.get(ISentence.CONCEPT_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;
+	}
+
 
 	@Override
 	public void setWikiData(JsonArray wikidata) {
@@ -288,6 +303,7 @@ public class ASRSentence implements ISentence {
 		JsonArray ja = this.getNominalPhrases();
 		return (ja != null && !ja.isEmpty());
 	}
+
 
 	
 

@@ -24,6 +24,7 @@ public interface ISentence extends IAddressable {
 		RESNOUN_FIELD	= "rnoun", 	// resolved nouns
 		VERB_FIELD		= "verb",
 		SPACY_FiELD		= "spacy",	//JSON blob from spacy POS
+		CONCEPT_FIELD	= "cons", 	// ontology data
 		WD_FIELD		= "wd",		//Wikidata identities
 		DBP_FIELD		= "dbp", 	//DBpedia blobs
 		TRIPLE_FIELD	= "trpl",
@@ -68,6 +69,14 @@ public interface ISentence extends IAddressable {
 	 * @return
 	 */
 	JsonArray getSpacyData();
+	
+	void setSpacyConcepts(JsonArray concepts);
+	
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */
+	JsonArray getSpacyConcepts();
 	
 	//void addWikidataId(String wikidata);
 	void setWikiData(JsonArray wikidata);
