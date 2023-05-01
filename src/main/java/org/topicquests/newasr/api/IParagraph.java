@@ -15,7 +15,8 @@ import com.google.gson.JsonObject;
  */
 public interface IParagraph  extends IAddressable {
 	public static final String
-		SENTENCE_ID_FIELD		= "sIds";
+		SENTENCE_ID_FIELD		= "sIds",
+		CONCEPTS_FIELD			= "concepts";
 
 	void setDocumentId(long id);
 	
@@ -36,6 +37,18 @@ public interface IParagraph  extends IAddressable {
 	 * @return
 	 */
 	JsonArray getSentenceIds();
+	
+	/**
+	 * Concepts are Ontology entries detected by spaCy in each sentence
+	 * @param concepts
+	 */
+	void setParagraphConcepts(JsonObject concepts);
+	
+	/**
+	 * can return {@code null}
+	 * @return
+	 */
+	JsonObject getParagraphConcepts();
 	
 	JsonObject getData();
 }

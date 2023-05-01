@@ -101,21 +101,6 @@ public class ASRSentence implements ISentence {
 			return je.getAsJsonArray();
 		return null;
 	}
-	
-	@Override
-	public void setSpacyConcepts(JsonObject concepts) {
-		data.add(ISentence.CONCEPT_FIELD, concepts);
-
-	}
-
-	@Override
-	public JsonObject getSpacyConcepts() {
-		JsonElement je = data.get(ISentence.CONCEPT_FIELD);
-		if (je != null)
-			return je.getAsJsonObject();
-		return null;
-	}
-
 
 	@Override
 	public void setWikiData(JsonArray wikidata) {

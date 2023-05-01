@@ -78,7 +78,6 @@ public class ASRParagraph implements IParagraph {
 	@Override
 	public void setSentenceIds(JsonArray ids) {
 		data.add(IParagraph.SENTENCE_ID_FIELD, ids);
-
 	}
 
 	@Override
@@ -90,8 +89,21 @@ public class ASRParagraph implements IParagraph {
 	}
 
 	@Override
+	public void setParagraphConcepts(JsonObject concepts) {
+		data.add(IParagraph.CONCEPTS_FIELD, concepts);
+	}
+
+	@Override
+	public JsonObject getParagraphConcepts() {
+		JsonElement je = data.get(IParagraph.CONCEPTS_FIELD);
+		if (je == null)
+			return null;
+		return je.getAsJsonObject();
+	}
+	@Override
 	public JsonObject getData() {
 		return data;
 	}
+
 
 }
