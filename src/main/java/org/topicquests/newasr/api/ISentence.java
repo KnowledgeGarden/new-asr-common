@@ -70,13 +70,13 @@ public interface ISentence extends IAddressable {
 	 */
 	JsonArray getSpacyData();
 	
-	void setSpacyConcepts(JsonArray concepts);
+	void setSpacyConcepts(JsonObject concepts);
 	
 	/**
 	 * Can return {@code null}
 	 * @return
 	 */
-	JsonArray getSpacyConcepts();
+	JsonObject getSpacyConcepts();
 	
 	//void addWikidataId(String wikidata);
 	void setWikiData(JsonArray wikidata);

@@ -103,16 +103,16 @@ public class ASRSentence implements ISentence {
 	}
 	
 	@Override
-	public void setSpacyConcepts(JsonArray concepts) {
+	public void setSpacyConcepts(JsonObject concepts) {
 		data.add(ISentence.CONCEPT_FIELD, concepts);
 
 	}
 
 	@Override
-	public JsonArray getSpacyConcepts() {
+	public JsonObject getSpacyConcepts() {
 		JsonElement je = data.get(ISentence.CONCEPT_FIELD);
 		if (je != null)
-			return je.getAsJsonArray();
+			return je.getAsJsonObject();
 		return null;
 	}
 
