@@ -42,13 +42,13 @@ public interface IParagraph  extends IAddressable {
 	 * Concepts are Ontology entries detected by spaCy in each sentence
 	 * @param concepts
 	 */
-	void setParagraphConcepts(JsonObject concepts);
+	void setParagraphConcepts(JsonArray concepts);
 	
 	/**
 	 * can return {@code null}
 	 * @return
 	 */
-	JsonObject getParagraphConcepts();
+	JsonArray getParagraphConcepts();
 	
 	JsonObject getData();
 }

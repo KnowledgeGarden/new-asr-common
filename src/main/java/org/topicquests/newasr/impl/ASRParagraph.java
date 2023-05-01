@@ -89,16 +89,16 @@ public class ASRParagraph implements IParagraph {
 	}
 
 	@Override
-	public void setParagraphConcepts(JsonObject concepts) {
+	public void setParagraphConcepts(JsonArray concepts) {
 		data.add(IParagraph.CONCEPTS_FIELD, concepts);
 	}
 
 	@Override
-	public JsonObject getParagraphConcepts() {
+	public JsonArray getParagraphConcepts() {
 		JsonElement je = data.get(IParagraph.CONCEPTS_FIELD);
 		if (je == null)
 			return null;
-		return je.getAsJsonObject();
+		return je.getAsJsonArray();
 	}
 	@Override
 	public JsonObject getData() {
