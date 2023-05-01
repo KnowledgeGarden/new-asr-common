@@ -26,6 +26,7 @@ public class JsonSet {
 	 * 
 	 */
 	public JsonSet() {
+		newSet(); // default
 	}
 
 	public JsonSet(JsonArray d) {
