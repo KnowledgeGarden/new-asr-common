@@ -14,10 +14,15 @@ import com.google.gson.JsonObject;
  */
 public interface IDocument extends IAddressable {
 	public static final String
+		PUBLICATION_TYPE		= "doc",
+		CONVERSATION_TYPE		= "conv";
+	
+	public static final String
 		PUBLICATION_KEY			= "pub",
 		AUTHOR_KEY				= "author",
 		ABSTRACT_KEY			= "abs",
-		BODY_KEY				= "body";
+		BODY_KEY				= "body",
+		TYPE_KEY				= "type";
 	/**
 	 * Metadata about a publication
 	 * @param pub
@@ -43,6 +48,8 @@ public interface IDocument extends IAddressable {
 	void setAuthors(JsonArray authors);
 	void removeAuthor(IAuthor author);
 	
+	void setType(String t);
+	String getType();
 	/**
 	 * Can return {@code null}
 	 * @return

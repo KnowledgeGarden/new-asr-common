@@ -7,10 +7,13 @@
 package org.topicquests.newasr.impl;
 
 import org.topicquests.newasr.api.IAuthor;
+import org.topicquests.newasr.api.IConstants;
 import org.topicquests.newasr.api.IDocument;
 import org.topicquests.newasr.api.IPublication;
+import org.topicquests.newasr.api.ISentence;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
@@ -33,14 +36,12 @@ public class ASRDoocument implements IDocument {
 
 	@Override
 	public void setId(long id) {
-		// TODO Auto-generated method stub
-
+		data.addProperty(IConstants.ID_KEY, new Long(id));
 	}
 
 	@Override
 	public long getId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return data.get(IConstants.ID_KEY).getAsLong();
 	}
 
 	@Override
@@ -57,25 +58,27 @@ public class ASRDoocument implements IDocument {
 
 	@Override
 	public void setAbstract(String text) {
-		// TODO Auto-generated method stub
-		
+		data.addProperty(IDocument.ABSTRACT_KEY, text);
 	}
 
 	@Override
 	public String getAbstract() {
-		// TODO Auto-generated method stub
+		JsonElement je = data.get(IDocument.ABSTRACT_KEY);
+		if (je != null)
+			return je.getAsString();
 		return null;
 	}
 
 	@Override
 	public void setBody(String text) {
-		// TODO Auto-generated method stub
-		
+		data.addProperty(IDocument.BODY_KEY, text);
 	}
 
 	@Override
 	public String getBody() {
-		// TODO Auto-generated method stub
+		JsonElement je = data.get(IDocument.BODY_KEY);
+		if (je != null)
+			return je.getAsString();
 		return null;
 	}
 
@@ -105,6 +108,19 @@ public class ASRDoocument implements IDocument {
 	@Override
 	public JsonArray getAuthors() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setType(String t) {
+		data.addProperty(IDocument.TYPE_KEY, t);
+	}
+
+	@Override
+	public String getType() {
+		JsonElement je = data.get(IDocument.TYPE_KEY);
+		if (je != null)
+			return je.getAsString();
 		return null;
 	}
 
