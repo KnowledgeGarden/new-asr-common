@@ -20,17 +20,17 @@ import com.google.gson.JsonObject;
  * @author jackpark
  *
  */
-public class ASRDoocument implements IDocument {
+public class ASRDocument implements IDocument {
 	private JsonObject data;
 
 	/**
 	 * 
 	 */
-	public ASRDoocument() {
+	public ASRDocument() {
 		data = new JsonObject();
 	}
 
-	public ASRDoocument(JsonObject d) {
+	public ASRDocument(JsonObject d) {
 		data = d;
 	}
 
