@@ -30,7 +30,8 @@ public interface ISentence extends IAddressable {
 		TRIPLE_FIELD	= "trpl",
 		CONJUNCT_FIELD	= "conj",
 		DISJUNCT_FIELD	= "disj",
-		NOMINAL_FIELD	= "nom"; 	// e.g. "pandemic of"
+		NOMINAL_FIELD	= "nom", 	// e.g. "pandemic of"
+		SUCHAS_FIELD	= "suchas";
 	
 	JsonObject getData();
 	
@@ -148,13 +149,23 @@ public interface ISentence extends IAddressable {
 	
 	boolean hasConjuncts();
 	
-	void addNominalPhrae(JsonObject nom);
+	void addNominalPhrase(JsonObject nom);
 	void setNominalPhrases(JsonArray noms);
+	
 	/**
 	 * Can return {@code null}
 	 * @return
 	 */	
 	JsonArray getNominalPhrases();
+	
+	void addSuchAs(JsonObject suchas);
+	void setSuchAs(JsonArray suchas);
+	
+	/**
+	 * Can return {@code null}
+	 * @return
+	 */	
+	JsonArray getSuchAs();
 	
 	boolean hasNominals();
 }

@@ -261,7 +261,7 @@ public class ASRSentence implements ISentence {
 	}
 
 	@Override
-	public void addNominalPhrae(JsonObject nom) {
+	public void addNominalPhrase(JsonObject nom) {
 		JsonArray dis = getNominalPhrases();
 		if (dis == null) {
 			dis = new JsonArray();
@@ -287,6 +287,29 @@ public class ASRSentence implements ISentence {
 	public boolean hasNominals() {
 		JsonArray ja = this.getNominalPhrases();
 		return (ja != null && !ja.isEmpty());
+	}
+
+	@Override
+	public void addSuchAs(JsonObject suchas) {
+		JsonArray dis = getSuchAs();
+		if (dis == null) {
+			dis = new JsonArray();
+			setSuchAs(dis);
+		}
+		dis.add(suchas);
+	}
+
+	@Override
+	public void setSuchAs(JsonArray suchas) {
+		data.add(ISentence.SUCHAS_FIELD, suchas);
+	}
+
+	@Override
+	public JsonArray getSuchAs() {
+		JsonElement je = data.get(ISentence.SUCHAS_FIELD);
+		if (je != null)
+			return je.getAsJsonArray();
+		return null;	
 	}
 
 

@@ -71,6 +71,8 @@ public class ASRParagraph implements IParagraph {
 		if (je == null) {
 			ja = new JsonArray();
 			data.add(IParagraph.SENTENCE_ID_FIELD, ja);
+		} else {
+			ja =je.getAsJsonArray();
 		}
 		ja.add(new Long(id));
 	}

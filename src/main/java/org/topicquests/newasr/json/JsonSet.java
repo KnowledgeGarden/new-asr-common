@@ -57,6 +57,7 @@ public class JsonSet {
 	 * @param value
 	 */
 	public void addTriple(JsonObject value) {
+		System.out.println("IEQXA "+value);
 		int len = data.size();
 		JsonObject jo;
 		String valueText = value.get("txt").getAsString();
@@ -68,17 +69,26 @@ public class JsonSet {
 			jo = data.get(i).getAsJsonObject();
 			text = jo.get("txt").getAsString();
 			where = jo.get("strt").getAsJsonPrimitive().getAsInt();
+			System.out.println("IEQX "+value+"\n"+jo);
 			if (isEquivalent(valueWhere, where) &&
 				isEquivalent(valueText, text)) {
+				System.out.println("IEQXX ");
+
 				isFound = true;
 				break;
 			}
+			System.out.println("IEQYY ");
+
 		}
+		System.out.println("IEQXX "+isFound+"/n"+data);
+
 		if (!isFound)
 			data.add(value);
+		System.out.println("IEQX++n"+data);
 	}
 	
 	boolean isEquivalent(String valueText, String text) {
+		System.out.println("IEQS "+valueText+" | "+text);
 		String foo = valueText.toLowerCase();
 		String bar = text.toLowerCase();
 		if (foo.equals(bar))
@@ -87,6 +97,7 @@ public class JsonSet {
 			return true;
 		if (bar.contains(foo))
 			return true;
+		System.out.println("IEQS-1 false");
 		return false;
 	}
 	boolean isEquivalent(int valueWhere, int where) {
