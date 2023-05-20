@@ -5,17 +5,25 @@
  */
 package org.topicquests.newasr.impl;
 
+import java.io.IOException;
 import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.topicquests.newasr.api.IASREnvironment;
 import org.topicquests.newasr.api.IExpectationTypes;
+import org.topicquests.newasr.http.APIServer;
 import org.topicquests.newasr.kafka.CommonKafkaProducer;
 import org.topicquests.newasr.util.Configurator;
 import org.topicquests.os.asr.StatisticsHttpClient;
 
 import com.google.gson.JsonObject;
+
 
 
 /**
@@ -34,6 +42,7 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	private final String EXPECTATION_TOPIC, SENTENCE_KEY;
 	private final Integer partition;
 	private StatisticsHttpClient statsClient;
+	private APIServer server;
 
 	/**
 	 * 
@@ -51,6 +60,7 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 
 		kafkaProducer = new CommonKafkaProducer(this, AGENT_GROUP);
 		statsClient = new StatisticsHttpClient(this);
+		server = new APIServer(this);
 	}
 	
 	public StatisticsHttpClient getStatisticsClient() {
@@ -80,6 +90,13 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 		jo.addProperty("cargo", cargo);
 		kafkaProducer.sendMessage(EXPECTATION_TOPIC, jo.toString(), SENTENCE_KEY, partition);
 	}
+
+	////////////////////////////
+	// API Server
+	///////////////////////////
+	public abstract void executeGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+
+	public abstract void executePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
 
 	@Override
