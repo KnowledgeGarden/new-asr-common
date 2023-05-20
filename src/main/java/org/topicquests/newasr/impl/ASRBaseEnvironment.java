@@ -13,6 +13,7 @@ import org.topicquests.newasr.api.IASREnvironment;
 import org.topicquests.newasr.api.IExpectationTypes;
 import org.topicquests.newasr.kafka.CommonKafkaProducer;
 import org.topicquests.newasr.util.Configurator;
+import org.topicquests.os.asr.StatisticsHttpClient;
 
 import com.google.gson.JsonObject;
 
@@ -32,6 +33,7 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 	public static final String AGENT_GROUP = "ASRGroup";
 	private final String EXPECTATION_TOPIC, SENTENCE_KEY;
 	private final Integer partition;
+	private StatisticsHttpClient statsClient;
 
 	/**
 	 * 
@@ -48,7 +50,11 @@ public abstract class ASRBaseEnvironment implements IASREnvironment {
 
 
 		kafkaProducer = new CommonKafkaProducer(this, AGENT_GROUP);
-
+		statsClient = new StatisticsHttpClient(this);
+	}
+	
+	public StatisticsHttpClient getStatisticsClient() {
+		return statsClient;
 	}
 	
 	public Map<String,Object> getCommonProperties() {
