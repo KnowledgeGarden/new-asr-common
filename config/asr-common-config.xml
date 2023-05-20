@@ -24,6 +24,9 @@
 	<parameter name="StatServerURl" value="localhost" /> 
 	<parameter name="StatServerPort" value="6900" /> 
 	
+	<!-- API server -->
+	<parameter name="ServerPort" value="9900" /> 
+	
 	<!--  kafka rewinging T or F -->
 	<parameter name="ConsumerRewind" value="T" />
 </properties>
