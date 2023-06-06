@@ -16,3 +16,7 @@ psql bigjuice -f paragraph-schema.sql
 psql bigjuice -f sentence-schema.sql
 psql bigjuice -f wordgram-schema.sql
 psql bigjuice -f triple-schema.sql
+
+Also
+create database newdictionary owner tq_admin;
+psql tripletest -f dictionary.sql
