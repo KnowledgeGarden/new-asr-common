@@ -18,4 +18,4 @@ psql bigjuice -f triple-schema.sql
 
 Also
 psql postgres -c "create database newdictionary owner tq_admin;"
-psql tripletest -f dictionary.sql
+psql newdictionary -f dictionary.sql
