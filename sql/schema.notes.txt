@@ -1,16 +1,15 @@
-psql postgres -- to boot psql
-WOORDGRAMS
-create database asrtest owner tq_admin;
-requires tq_admin with a password
-to install 
+# WORDGRAMS
+psql postgres -c "psql postgres -c "create database asrtest owner tq_admin;"
+# requires tq_admin with a password to install
 psql asrtest -f wordgram-schema.sql
-TRIPLES
-create database tripletest owner tq_admin;
-psql tripletest -f triple-schema.sql
+# TRIPLES
+psql postgres -c "create database tripletest owner tq_admin;"
+# psql tripletest -f triple-schema.sql
+# Fails without some prerequisites
 
 
-BIGJUICE
-create database bigjuice owner tq_admin;
+# BIGJUICE
+psql postgres -c "create database bigjuice owner tq_admin;"
 psql bigjuice -f document-schema.sql
 psql bigjuice -f paragraph-schema.sql
 psql bigjuice -f sentence-schema.sql
@@ -18,5 +17,5 @@ psql bigjuice -f wordgram-schema.sql
 psql bigjuice -f triple-schema.sql
 
 Also
-create database newdictionary owner tq_admin;
+psql postgres -c "create database newdictionary owner tq_admin;"
 psql tripletest -f dictionary.sql
