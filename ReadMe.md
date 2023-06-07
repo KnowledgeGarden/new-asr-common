@@ -14,10 +14,10 @@ However, at this time, the new-asr libraries and many TopicQuests libries, e.g..
 They must be installed.
 
 ### Low level support - evolve very slowly
-- git@github.com:topicquests/tq-support.git then 
+- git@github.com:topicquests/tq-support.git then
 - git@github.com:topicquests/tqos-asr-statistics-client.git
 - git@github.com:topicquests/tqks-kafka-support.git
-- git@github.com:topicquests/tqks-postgress-provider.git
+- git@github.com:topicquests/tqks-postgresql-provider.git
 - git@github.com:topicquests/tqos-asr-common.git
 - git@github.com:KnowledgeGarden/tqos-asr-spacy-driver.git
 
